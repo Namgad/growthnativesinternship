@@ -1,0 +1,39 @@
+<html>
+    <body>
+        <div>
+            Add Anything: <input type="text" id="text">
+            <br>
+            <button onclick="clickFunction()">Add</button>            
+        </div>
+        <script>
+            const userValue = [];
+            function clickFunction(){
+                let text = document.getElementById('text').value;
+                userValue.push(text);
+                document.getElementById('result').innerHTML = userValue;
+                console.log(userValue);
+            }
+        </script>
+        <br>
+        Array result:
+        <div id="result"></div>
+        <br>
+        <input type="file" id="in" />
+        <button id="read">Read File</button>
+        <br><br>
+        File Result:
+        <pre id="con"></pre>
+
+        <script>
+            document.getElementById("read").addEventListener('click', function() {
+                let file = document.getElementById("in").files[0];
+                let reader = new FileReader();
+                reader.addEventListener('load', function(e) {
+                        let text = e.target.result;
+                        document.getElementById("con").textContent = text;
+                });
+                reader.readAsText(file);
+            });
+        </script>
+    </body>
+</html>
